@@ -10,16 +10,65 @@ contract Hello {
         // string called message with its associated value
         // these are all key value pairs
         string message = "Hello Class";
-        // string called alphabet with its associated value
-        string alphabet = "ABCDEF";
-        // string called color with its associated value
-        string color = "Red";
+
+         // state variables are declared outside of functions at the contract level
+        // state variables are stored permanently on the blockchain (in contract storage)
+        // they gas to write or update
+        uint public count; // <-- state variable
+
+        // visibility types control who can access or call variables and functions
+        // public, can be accessed by anyone
+        // external, the contract has a method that is callable from outside of this contract
+        // internal, same as public, but cannot be called out side of this contract
+        // private, it cannot be called in any way other than via a function in this contract
+
+        uint public anotherNumber = 9; // accessible by anyone
+        uint private secret;    // internal use only
+
+        function increment() public {} // callable by anyone
+        function _reset() internal {} // internal use only
+
+        // view vs pure functions
+        // these keywords describe how a function interacts with blockchain state
+        function getCount() public view returns (uint) {
+            return count;       // reads state
+        }   
+        function double(uint x) public pure returns (uint) {
+            return x * 2;    // uses only input, no state
+        }
+      
+      // uint, unsigned integer
+        // uint is a data type used to store whole numbers that are always zero
+        // or positive
+        // its suze 256 bits
+        // max value 2^256 -1 
+        uint256 public myNumber;
+        uint public secondNumber = 25;
+        uint public zero = 0;
+        // int, stands for signed integer, which is a number that can be positive, negative or zero
+        int public negativeNumber = -1;
+        int public secondNegativeNumber = -2000;
+        int public zeroNumber = 0;
+
+        // bool, boolean, data that's either true or false
+        bool public isOpen = true;
+        bool public isRaining = false;
+
+        // address, special data type that holds a 20-byte (40 hexidecimal charaacters) Ethereum address
+        // msg.sender refers to the address of the account (or contract) that called the current function
+        address public owner = msg.sender;
+        address public test = 0xE2DFC07f329041a05f5257f27CE01e4329FC64Ef;
+
+      // local variables are declared inside functions
+      // they exist temporarily in memory during function execution
+      // do not cost gas unless used in transactions
+      // Function to update the message
+      function setMessage(string memory newMessage) public {
+                message = newMessage; // <-- local variable
+                    }
 
         
 }
 
 // Bytecode that the EVM understands and processes
-// 60806040526040518060400160405280600b81526020017f48656c6c6f20436c6173730000000000000000000000000000000000000000008152505f90816100479190610320565b506040518060400160405280600681526020017f41424344454600000000000000000000000000000000000000000000000000008152506001908161008c9190610320565b506040518060400160405280600381526020017f5265640000000000000000000000000000000000000000000000000000000000815250600290816100d19190610320565b503480156100dd575f5ffd5b506103ef565b5f81519050919050565b7f4e487b71000000000000000000000000000000000000000000000000000000005f52604160045260245ffd5b7f4e487b71000000000000000000000000000000000000000000000000000000005f52602260045260245ffd5b5f600282049050600182168061015e57607f821691505b6020821081036101715761017061011a565b5b50919050565b5f819050815f5260205f209050919050565b5f6020601f8301049050919050565b5f82821b905092915050565b5f600883026101d37fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff82610198565b6101dd8683610198565b95508019841693508086168417925050509392505050565b5f819050919050565b5f819050919050565b5f61022161021c610217846101f5565b6101fe565b6101f5565b9050919050565b5f819050919050565b61023a83610207565b61024e61024682610228565b8484546101a4565b825550505050565b5f5f905090565b610265610256565b610270818484610231565b505050565b5b81811015610293576102885f8261025d565b600181019050610276565b5050565b601f8211156102d8576102a981610177565b6102b284610189565b810160208510156102c1578190505b6102d56102cd85610189565b830182610275565b50505b505050565b5f82821c905092915050565b5f6102f85f19846008026102dd565b1980831691505092915050565b5f61031083836102e9565b9150826002028217905092915050565b610329826100e3565b67ffffffffffffffff811115610342576103416100ed565b5b61034c8254610147565b610357828285610297565b5f60209050601f831160018114610388575f8415610376578287015190505b6103808582610305565b8655506103e7565b601f19841661039686610177565b5f5b828110156103bd57848901518255600182019150602085019450602081019050610398565b868310156103da57848901516103d6601f8916826102e9565b8355505b6001600288020188555050505b505050505050565b603e806103fb5f395ff3fe60806040525f5ffdfea264697066735822122015018ddd8ff7fddbdb3956e3536d2104f3ee3a45c905bc8247000ff6ec20941664736f6c634300081e0033
-
-
-
+// 60806040526040518060400160405280600b81526020017f48656c6c6f20436c6173730000000000000000000000000000000000000000008152505f90816100479190610320565b506040518060400160405280600681526020017f41424344454600000000000000000000000000
