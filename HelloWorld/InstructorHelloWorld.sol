@@ -64,7 +64,7 @@ contract Hello {
       // do not cost gas unless used in transactions
       // Function to update the message
       function setMessage(string memory newMessage) public {
-                message = newMessage; // <-- local variable
+                message = newMessage; // 
                     }
 
         
