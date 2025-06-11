@@ -1,0 +1,19 @@
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.30;
+
+contract Hello_BlockChain_Homework {
+    string public message;
+    
+    //Using constructor to set initial message
+    constructor(string memory) {
+        message = "helloBlockchain";
+        
+        }
+    function updatemessage(string calldata newMessage) public {
+            message = newMessage;
+    }
+ // I got 2 errors that were constant for "update message" function. I guess I had to close the constructor function
+ with curly bracket before just adding function. The second error, solidity AI suggested I remove helloblockchain 
+ from within my constructor input parentheses. I dont know why but I removed it and after running the compiler
+ after that, it went through with no error. Overall, I had to rewatch videos and use solidity AI and GPT, so I am 
+ mostly following along, not necessarily aware of all the syntax as yet, but I will with practice and more study.
