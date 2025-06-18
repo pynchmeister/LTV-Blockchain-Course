@@ -1,0 +1,23 @@
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.30;
+
+contract OnlyOwner {
+    address public owner;
+    string  message = "You are the Owner";
+    string  message2 = "You are NOT the Owner";
+
+    constructor() {
+        owner = msg.sender;
+    }
+
+    function whoistheOwner() public view returns (string memory) {
+        if (msg.sender == address(0)){
+            return "You are the Owner"; 
+             
+        } else{ 
+            return "You are NOT the Owner"; 
+        }
+        
+    }
+
+ }
